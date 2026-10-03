@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemiii AI App</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-900 text-white h-screen flex flex-col justify-between">
@@ -32,10 +31,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript Logic -->
     <script>
-        // Aapki API Key yahan direct configured hai
-        const API_KEY = "AQ.Ab8RN6K8w-Mc5Sk5j9442BsXoJ61faaDe11Agcq1hmZ8abDW8g";
+        // Aapki asli API key yahan configured hai
+        const API_KEY = "AQ.Ab8RN6K3ZZOQ68cZMqiSobzkFyA5gMDNQiojGA0r7XQextHLjg";
 
         async function sendMessage() {
             const inputField = document.getElementById('userInput');
@@ -53,7 +51,6 @@
             inputField.value = '';
             chatContainer.scrollTop = chatContainer.scrollHeight;
 
-            // Loading placeholder
             const loadingId = 'loading-' + Date.now();
             chatContainer.innerHTML += `
                 <div id="${loadingId}" class="flex justify-start">
@@ -82,9 +79,10 @@
                         </div>
                     `;
                 } else {
+                    const errorMsg = data.error ? data.error.message : "Invalid API response.";
                     chatContainer.innerHTML += `
                         <div class="flex justify-start">
-                            <div class="bg-red-900 p-3 rounded-lg max-w-[80%] text-sm shadow">Error: Invalid API response.</div>
+                            <div class="bg-red-900 p-3 rounded-lg max-w-[80%] text-sm shadow">Error: ${escapeHtml(errorMsg)}</div>
                         </div>
                     `;
                 }
@@ -104,5 +102,5 @@
         }
     </script>
 </body>
-</html>
-
+    </html>
+    
